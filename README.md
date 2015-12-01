@@ -29,14 +29,27 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
 
 ## cpu example
 
-limitting cpu 10%
+#### no limit
+
+- command
+```
+yes >> /dev/null
+```
+
+- cpu usage
+```
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+27577 matsumot  20   0 98.5m  608  520 R 100.0  0.0   0:01.95 yes 
+```
+
+#### limitting cpu 10%
 
 - command
 ```
 sudo ./rcon --user matsumotory --command "yes >> /dev/null" --cpu 10
 ```
 
-- cpu usage
+- cpu usage limitted 10% by rcon
 ```
   PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
 23941 matsumot  20   0 98.5m  604  520 R  9.6  0.0   0:00.63 yes
@@ -44,14 +57,27 @@ sudo ./rcon --user matsumotory --command "yes >> /dev/null" --cpu 10
 
 ## io example
 
-limitting write io 1MByte/sec
+#### no limit
+
+- command 
+```
+dd if=/dev/zero of=tempfile bs=1M count=1000 oflag=direct
+```
+
+- io usage
+```
+  TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND
+27569 be/4 matsumot    0.00 B/s   22.09 M/s  0.00 % 95.93 % dd if=/dev/zero of=tempfile bs=1M count=1000 oflag=direct
+```
+
+#### limitting write io 1MByte/sec
 
 - command
 ```
 sudo ./rcon --user matsumotory --command "dd if=/dev/zero of=tempfile bs=1M count=1000 oflag=direct" --write 1024000
 ```
 
-- io usage
+- io usage limitted 1MByte/sec by rcon
 ```
   TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO>    COMMAND
 24676 be/4 matsumot    0.00 B/s  995.77 K/s  0.00 % 99.99 % dd if=/dev/zero of=tempfile bs=1M count=1000 oflag=direct  
