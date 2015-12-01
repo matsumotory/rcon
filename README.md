@@ -1,6 +1,12 @@
 # rcon
 
-rcon is a lightweight resource virtualization tool for linux processes.
+rcon is a lightweight resource virtualization tool for linux processes. rcon is one-binary.
+
+## build
+```
+rake
+cp -p mruby/bin/rcon /path/to/bin-dir/.
+```
 
 ## usage
 ```
