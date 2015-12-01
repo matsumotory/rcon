@@ -57,8 +57,10 @@ sudo ./rcon --user matsumotory --command "dd if=/dev/zero of=tempfile bs=1M coun
 24676 be/4 matsumot    0.00 B/s  995.77 K/s  0.00 % 99.99 % dd if=/dev/zero of=tempfile bs=1M count=1000 oflag=direct  
 ```
 
-- find io dev id(--dev)
+- find io dev id (--dev)
 ```
 $ ls -l /dev/xvda | awk '{print $5 $6}' | sed 's/,/:/'
 202:0
 ```
+
+for `--dev` option. default `202:0`.
