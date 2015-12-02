@@ -1,7 +1,5 @@
 def __main__(argv)
-  opts = Getopts.getopts("", "cpu:30", "mem:#{512 * 1024 * 1024}", "read:10485760", "write:10485760", "group:rcon", "user:", "command:", "dev:202:0", "version", "help").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
-
-  p opts
+  opts = Getopts.getopts("", "cpu:30", "mem:#{512 * 1024 * 1024}", "read:#{10 * 1024 * 1024}", "write:#{10 * 1024 * 1024}", "group:rcon", "user:", "command:", "dev:8:0", "version", "help").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
 
   raise ArgumentError, "\n\n#{Rconner::USAGE}\n" if opts.has_key?(:"?")
 
