@@ -3,7 +3,7 @@ compiler:
   - gcc
   - clang
 services:
-  - cgconfig
+  - cgmanager
 before_install:
   - sudo apt-get -qq update
 install:
