@@ -1,5 +1,5 @@
 def __main__(argv)
-  opts = Getopts.getopts("", "cpu:30", "memory:#{512 * 1024 * 1024}", "read:#{10 * 1024 * 1024}", "write:#{10 * 1024 * 1024}", "group:rcon", "user:", "command:", "dev:8:0", "version", "help").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
+  opts = Getopts.getopts("", "cpu:30", "memory:#{512 * 1024 * 1024}", "read:#{10 * 1024 * 1024}", "write:#{10 * 1024 * 1024}", "group:rcon", "user:", "command:", "dev:8:0", "version", "help", "dry-run").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
 
   raise ArgumentError, "\n\n#{Rconner::USAGE}\n" if opts.has_key?(:"?")
 
@@ -10,6 +10,11 @@ def __main__(argv)
 
   if opts.has_key? :help
     puts Rconner::USAGE
+    exit
+  end
+
+  if opts.has_key? :"dry-run"
+    p opts
     exit
   end
 
