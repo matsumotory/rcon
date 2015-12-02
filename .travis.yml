@@ -9,4 +9,4 @@ install:
   - sudo apt-get -qq install rake bison git gperf libcgroup-dev
   - gem install rake
 script: 
-  - rake all test
+  - sudo rake all test
