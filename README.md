@@ -27,7 +27,7 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
     --group VAL
       defualt: rcon
     --dev VAL
-      default: 202:0
+      default: 8:0
     --version
 ```
 
