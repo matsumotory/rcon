@@ -5,8 +5,8 @@ compiler:
 before_install:
   - sudo apt-get -qq update
 install:
-  - sudo apt-get -qq install rake bison git gperf libcgroup-dev cgroup-bin
+  - sudo apt-get -qq install rake bison git gperf libcgroup-dev cgroup-lite
   - gem install rake
-  - sudo service cgmanager start
+  - sudo service cgroup-lite start
 script: 
   - rake all test
