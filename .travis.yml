@@ -5,7 +5,7 @@ compiler:
 before_install:
   - sudo apt-get -qq update
 install:
-  - sudo apt-get -qq install rake bison git gperf libcgroup-dev cgroup-lite
+  - sudo apt-get -qq install rake bison git gperf libcgroup-dev lxc
   - gem install rake
 script: 
   - rake all test
