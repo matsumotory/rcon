@@ -4,8 +4,9 @@ compiler:
   - clang
 before_install:
   - sudo apt-get -qq update
+  - sudo cp test/cgconfig.conf /etc/.
 install:
-  - sudo apt-get -qq install rake bison git gperf libcgroup-dev lxc
+  - sudo apt-get -qq install rake bison git gperf libcgroup-dev
   - gem install rake
 script: 
   - rake all test
