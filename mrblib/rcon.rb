@@ -35,4 +35,5 @@ def __main__(argv)
       :oom => true,
     },
   }).run
+  opts
 end

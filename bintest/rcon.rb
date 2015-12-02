@@ -2,15 +2,15 @@ require 'open3'
 
 BIN_PATH = File.join(File.dirname(__FILE__), "../mruby/bin/rcon")
 
-assert('hello') do
-  output, status = Open3.capture2(BIN_PATH)
+assert('user') do
+  output, status = Open3.capture2("sudo", BIN_PATH, "--user", "daemon", "--command", "id -u")
 
   assert_true status.success?, "Process did not exit cleanly"
-  assert_include output, "Hello World"
+  assert_include output, "2\n"
 end
 
 assert('version') do
-  output, status = Open3.capture2(BIN_PATH, "version")
+  output, status = Open3.capture2(BIN_PATH, "--version")
 
   assert_true status.success?, "Process did not exit cleanly"
   assert_include output, "v0.0.1"

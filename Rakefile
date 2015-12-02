@@ -39,7 +39,7 @@ namespace :test do
     # we need to make sure the tests are built relative from mruby_root
     MRuby.each_target do |target|
       # only run unit tests here
-      target.enable_bintest = false
+      target.enable_bintest = true
       run_test if target.test_enabled?
     end
   end
