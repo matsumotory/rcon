@@ -1,15 +1,11 @@
 language: c
-
-sudo: false
-
-matrix:
-  include:
-    - os: linux
-
-addons:
-  apt:
-    packages:
-      - gperf
-      - libcgroup-dev
-
-script: "rake"
+compiler:
+  - gcc
+  - clang
+before_install:
+  - sudo apt-get -qq update
+install:
+  - sudo apt-get -qq install rake bison git gperf libcgroup-dev
+  - gem install rake
+script: 
+  - rake all test
