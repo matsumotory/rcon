@@ -7,6 +7,5 @@ before_install:
 install:
   - sudo apt-get -qq install rake bison git gperf libcgroup-dev cgroup-lite
   - gem install rake
-  - sudo service cgroup-lite start
 script: 
   - rake all test
