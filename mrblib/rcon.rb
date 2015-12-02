@@ -1,5 +1,5 @@
 def __main__(argv)
-  opts = Getopts.getopts("", "cpu:30", "mem:#{512 * 1024 * 1024}", "read:#{10 * 1024 * 1024}", "write:#{10 * 1024 * 1024}", "group:rcon", "user:", "command:", "dev:8:0", "version", "help").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
+  opts = Getopts.getopts("", "cpu:30", "memory:#{512 * 1024 * 1024}", "read:#{10 * 1024 * 1024}", "write:#{10 * 1024 * 1024}", "group:rcon", "user:", "command:", "dev:8:0", "version", "help").each_with_object({}) {|ary,opts| opts[ary[0].to_sym] = ary[1] }
 
   raise ArgumentError, "\n\n#{Rconner::USAGE}\n" if opts.has_key?(:"?")
 
@@ -31,7 +31,7 @@ def __main__(argv)
       :blk_rbps => opts[:read].to_i,
       :blk_wbps => opts[:write].to_i,
       # Memory [Bytes]
-      :mem => opts[:mem].to_f,
+      :mem => opts[:memory].to_f,
       :oom => true,
     },
   }).run

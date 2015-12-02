@@ -18,7 +18,7 @@ cp -p mruby/bin/rcon /path/to/bin-dir/.
 Usage: rcon [options] --user username --command "yes >> /dev/null"
     --cpu VAL
       default: 30 (%)
-    --mem VAL
+    --memory VAL
       default: 512000000 (Byte)
     --read VAL
       defualt: 10485760 (Byte/sec)

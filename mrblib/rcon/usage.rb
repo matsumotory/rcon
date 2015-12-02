@@ -3,7 +3,7 @@ module Rconner
 Usage: rcon [options] --user username --command "yes >> /dev/null"
     --cpu VAL
       default: 30 (%)
-    --mem VAL
+    --memory VAL
       default: 512000000 (MiB)
     --read VAL
       defualt: 10000000 (Byte/sec)
