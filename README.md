@@ -15,7 +15,7 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
     --cpu VAL
       default: 30 (%)
     --mem VAL
-      default: 512 (MiB)
+      default: 512000000 (Byte)
     --read VAL
       defualt: 10485760 (Byte/sec)
     --write VAL
