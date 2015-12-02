@@ -1,0 +1,15 @@
+language: c
+
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+
+addons:
+  apt:
+    packages:
+      - gperf
+      - libcgroup
+
+script: "rake"
