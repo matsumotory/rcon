@@ -70,6 +70,28 @@ desc "run all tests"
 Rake::Task['test'].clear
 task :test => ["test:mtest", "test:bintest"]
 
+desc "package"
+task :package do
+  require_relative 'mrblib/rcon/version'
+
+  FileUtils.rm_rf "../pkg"
+  FileUtils.mkdir_p "../pkg" unless File.exist? "pkg"
+
+  %w[glibc-2.12 glibc-2.14].each do |dist|
+    Rake::Task["clean"].execute
+    # build linux_amd64
+    sh "docker-compose build #{dist}"
+    sh "docker-compose run #{dist}"
+
+    %w[linux_amd64].each do |target|
+      Dir.chdir "../mruby/build/#{target}/bin" do
+        sh "zip #{APP_NAME}.zip #{APP_NAME}" unless File.exist? "#{APP_NAME}.zip"
+        FileUtils.mv "#{APP_NAME}.zip", "../../../../pkg/#{APP_NAME}_#{Rconner::VERSION}_#{target}_#{dist}.zip"
+      end
+    end
+  end
+end
+
 desc "cleanup"
 task :clean do
   sh "rake deep_clean"
@@ -89,7 +111,6 @@ def is_in_a_docker_container?
 end
 
 Rake.application.tasks.each do |task|
-  #next if ENV["MRUBY_CLI_LOCAL"]
   next
   unless task.name.start_with?("local:")
     # Inspired by rake-hooks

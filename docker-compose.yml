@@ -1,20 +1,15 @@
-compile: &defaults
+# build on centos6 for glibc 2.12 or earlier
+glibc-2.12:
+  dockerfile: Dockerfile.glibc-2.12
   build: .
   volumes:
     - .:/home/mruby/code:rw
   command: rake compile
-test:
-  <<: *defaults
-  command: rake test
-bintest:
-  <<: *defaults
-  command: rake test:bintest
-mtest:
-  <<: *defaults
-  command: rake test:mtest
-clean:
-  <<: *defaults
-  command: rake clean
-shell:
-  <<: *defaults
-  command: bash
+
+# build on ubuntu 14_04 for glibc 2.14 or later binary like centos7
+glibc-2.14:
+  dockerfile: Dockerfile.glibc-2.14
+  build: .
+  volumes:
+    - .:/home/mruby/code:rw
+  command: rake compile
