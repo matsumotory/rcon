@@ -1,6 +1,6 @@
 def gem_config(conf)
   conf.gembox 'full-core'
-  conf.gem :github => "matsumoto-r/mruby-rcon"
+  conf.gem :mgem => "mruby-rcon"
   conf.gem :mgem => "mruby-env"
   conf.gem :mgem => "mruby-getopts"
   conf.gem :mgem => "mruby-signal"
