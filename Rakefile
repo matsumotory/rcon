@@ -77,14 +77,17 @@ task :package do
   FileUtils.rm_rf "../pkg"
   FileUtils.mkdir_p "../pkg" unless File.exist? "pkg"
 
-  # build linux_amd64
-  sh "docker-compose up clean"
-  sh "docker-compose up compile"
+  %w[ubuntu14_04 centos6].each do |dist|
+    Rake::Task["clean"].execute
+    # build linux_amd64
+    sh "docker-compose build #{dist}"
+    sh "docker-compose run #{dist}"
 
-  %w[linux_amd64].each do |target|
-    Dir.chdir "../mruby/build/#{target}/bin" do
-      sh "zip #{APP_NAME}.zip #{APP_NAME}" unless File.exist? "#{APP_NAME}.zip"
-      FileUtils.mv "#{APP_NAME}.zip", "../../../../pkg/#{APP_NAME}_#{Rconner::VERSION}_#{target}.zip"
+    %w[linux_amd64].each do |target|
+      Dir.chdir "../mruby/build/#{target}/bin" do
+        sh "zip #{APP_NAME}.zip #{APP_NAME}" unless File.exist? "#{APP_NAME}.zip"
+        FileUtils.mv "#{APP_NAME}.zip", "../../../../pkg/#{APP_NAME}_#{Rconner::VERSION}_#{target}_#{dist}.zip"
+      end
     end
   end
 end
