@@ -13,6 +13,8 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
       defualt: rcon
     --dev VAL
       default: 8:0
+    --pids VAL
+      default: nothing
     --version
 USAGE
 end

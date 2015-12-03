@@ -28,6 +28,8 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
       defualt: rcon
     --dev VAL
       default: 8:0
+    --pids VAL
+      default: nothing
     --version
 ```
 
@@ -58,6 +60,22 @@ sudo ./rcon --user matsumotory --command "yes >> /dev/null" --cpu 10
   PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
 23941 matsumot  20   0 98.5m  604  520 R  9.6  0.0   0:00.63 yes
 ```
+
+### limitting running process cpu 30%
+
+- command
+```
+sudo ./rcon --pids "`pgrep yes`"
+```
+
+- cpu usage
+```
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND 
+22531 vagrant   20   0 98.5m  612  524 R 15.6  0.0   0:16.16 yes
+22532 vagrant   20   0 98.5m  612  524 R 14.3  0.0   0:15.47 yes
+```
+
+__Notice: pids optsion don't delete groups after running process was finished__
 
 ## io example
 
@@ -93,4 +111,4 @@ $ ls -l /dev/xvda | awk '{print $5 $6}' | sed 's/,/:/'
 202:0
 ```
 
-for `--dev` option. default `202:0`.
+for `--dev` option. default `8:0`.
