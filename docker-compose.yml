@@ -1,4 +1,4 @@
-# for centos6 glibc 2.12
+# build on centos6 for glibc 2.12 or earlier
 centos6:
   dockerfile: Dockerfile.centos6
   build: .
@@ -6,7 +6,7 @@ centos6:
     - .:/home/mruby/code:rw
   command: rake compile
 
-# for ubuntu 14_04 glibc 2.14 or later
+# build on ubuntu 14_04 for glibc 2.14 or later binary like centos7
 ubuntu14_04:
   dockerfile: Dockerfile.ubuntu14_14
   build: .
