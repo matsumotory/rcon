@@ -26,7 +26,6 @@ def __main__(argv)
   end
 
   if opts.has_key? :"dry-run"
-    p argv
     p opts
     exit
   end
