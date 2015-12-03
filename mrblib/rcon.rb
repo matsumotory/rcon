@@ -6,6 +6,7 @@ def __main__(argv)
                          "write:#{10 * 1024 * 1024}",
                          "group:rcon",
                          "user:",
+                         "pids:",
                          "command:",
                          "dev:8:0",
                          "version",
@@ -25,16 +26,20 @@ def __main__(argv)
   end
 
   if opts.has_key? :"dry-run"
+    p argv
     p opts
     exit
   end
 
-  raise ArgumentError, "command not found: --command" if opts[:command].empty?
-  raise ArgumentError, "user not found: --user" if opts[:user].empty?
+  raise ArgumentError, "command or pids not found: --command or --pids" if opts[:command].empty? && opts[:pids].empty?
+  raise ArgumentError, "don't use both --command and --pids" if ! opts[:command].empty? && ! opts[:pids].empty?
+  raise ArgumentError, "don't use both --user and --pids" if ! opts[:user].empty? && ! opts[:pids].empty?
+  raise ArgumentError, "user not found: --user" if opts[:user].empty? && opts[:pids].empty?
 
   Rcon.new({
-    :command  => opts[:command],
-    :user     => opts[:user],
+    :command  => opts[:pids].empty? ? opts[:command] : nil,
+    :pids     => opts[:pids].empty? ? nil : opts[:pids].split(" ").map(&:to_i),
+    :user     => opts[:pids].empty? ? opts[:user] : nil,
     :resource => {
       :root       => "/cgroup",
       :group      => opts[:group],
