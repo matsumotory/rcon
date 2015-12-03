@@ -13,10 +13,3 @@ assert('argv all') do
   assert_true status.success?, "Process did not exit cleanly"
   assert_include output, "{:user=>\"daemon\", :command=>\"id -u\", :\"dry-run\"=>\"\", :cpu=>\"20\", :memory=>\"512\", :write=>\"1024\", :read=>\"1024\", :group=>\"hoge\", :dev=>\"9:0\", :pids=>\"\"}\n"
 end
-
-assert('version') do
-  output, status = Open3.capture2(BIN_PATH, "--version")
-
-  assert_true status.success?, "Process did not exit cleanly"
-  assert_include output, "v0.0.1"
-end
