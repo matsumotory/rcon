@@ -40,6 +40,8 @@ def __main__(argv)
     :pids     => opts[:pids].empty? ? nil : opts[:pids].split(" ").map(&:to_i),
     :user     => opts[:pids].empty? ? opts[:user] : nil,
     :resource => {
+      # if you use oom event callbakc, you should set your cgroup root dir.
+      # since libcgroup don't support oom event callback.
       :root       => "/cgroup",
       :group      => opts[:group],
       :cpu_quota  => opts[:cpu].to_i * 1000,
