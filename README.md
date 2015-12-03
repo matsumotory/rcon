@@ -61,10 +61,12 @@ sudo ./rcon --user matsumotory --command "yes >> /dev/null" --cpu 10
 23941 matsumot  20   0 98.5m  604  520 R  9.6  0.0   0:00.63 yes
 ```
 
-### limitting running process cpu 30%
+### limitting already running process to cpu 30%
 
 - command
 ```
+yes >> /dev/null &
+yes >> /dev/null &
 sudo ./rcon --pids "`pgrep yes`"
 ```
 
