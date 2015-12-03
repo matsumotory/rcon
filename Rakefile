@@ -77,7 +77,7 @@ task :package do
   FileUtils.rm_rf "../pkg"
   FileUtils.mkdir_p "../pkg" unless File.exist? "pkg"
 
-  %w[ubuntu14_04 centos6].each do |dist|
+  %w[glibc-2.12 glibc-2.14].each do |dist|
     Rake::Task["clean"].execute
     # build linux_amd64
     sh "docker-compose build #{dist}"
