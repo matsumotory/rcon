@@ -18,3 +18,9 @@ MRuby::Build.new do |conf|
 
   gem_config(conf)
 end
+
+MRuby::Build.new('linux_amd64') do |conf|
+  toolchain :gcc
+
+  gem_config(conf)
+end
