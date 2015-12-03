@@ -6,11 +6,11 @@ Usage: rcon [options] --user username --command "yes >> /dev/null"
     --memory VAL
       default: 512000000 (MiB)
     --read VAL
-      defualt: 10000000 (Byte/sec)
+      default: 10000000 (Byte/sec)
     --write VAL
-      defualt: 10000000 (Byte/sec)
+      default: 10000000 (Byte/sec)
     --group VAL
-      defualt: rcon
+      default: rcon
     --dev VAL
       default: 8:0
     --pids VAL
