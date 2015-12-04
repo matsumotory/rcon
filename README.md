@@ -5,7 +5,7 @@ rcon is a lightweight resource virtualization tool for linux processes. rcon is 
 ## build
 
 - require
-  - libcgroup
+  - cgroup
 
 ```
 rake
