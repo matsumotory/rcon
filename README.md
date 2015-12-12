@@ -2,6 +2,10 @@
 
 rcon is a lightweight resource virtualization tool for linux processes. rcon is one-binary.
 
+## demo
+
+![](misc/rcon.gif)
+
 ## build
 
 - require
