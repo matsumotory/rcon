@@ -1,4 +1,4 @@
-# rcon [![Build Status](https://travis-ci.org/matsumoto-r/rcon.svg?branch=master)](https://travis-ci.org/matsumoto-r/rcon)
+# rcon [![Build Status](https://travis-ci.org/matsumotory/rcon.svg?branch=master)](https://travis-ci.org/matsumotory/rcon)
 
 rcon is a lightweight resource virtualization tool for linux processes. rcon is one-binary.
 
