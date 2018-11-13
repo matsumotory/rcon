@@ -92,6 +92,17 @@ task :package do
   end
 end
 
+task :ghr do
+  sh "go get -u github.com/tcnksm/ghr" if `type ghr`.empty?
+end
+
+desc "release"
+task :release => [:ghr] do
+  Dir.chdir(APP_ROOT)
+  require_relative 'mrblib/rcon/version'
+  sh "ghr -u matsumotory --replace v#{Rconner::VERSION} pkg/"
+end
+
 desc "cleanup"
 task :clean do
   sh "rake deep_clean"
