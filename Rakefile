@@ -1,11 +1,21 @@
 require 'fileutils'
 
-MRUBY_VERSION="1.2.0"
-
+MRUBY_VERSION=ENV["MRUBY_VERSION"] || "c3188cac431225fda48718f309ad3d9318a6e44f"
 file :mruby do
-  #sh "git clone --depth=1 https://github.com/mruby/mruby"
-  sh "curl -L --fail --retry 3 --retry-delay 1 https://github.com/mruby/mruby/archive/1.2.0.tar.gz -s -o - | tar zxf -"
-  FileUtils.mv("mruby-1.2.0", "mruby")
+  cmd =  "git clone git://github.com/mruby/mruby.git"
+  case MRUBY_VERSION
+  when /\A[a-fA-F0-9]+\z/
+    cmd << " && cd mruby"
+    cmd << " && git fetch  && git checkout #{MRUBY_VERSION}"
+  when /\A\d\.\d\.\d\z/
+    cmd << " && cd mruby"
+    cmd << " && git fetch --tags && git checkout $(git rev-parse #{MRUBY_VERSION})"
+  when "master"
+    # skip
+  else
+    fail "Invalid MRUBY_VERSION spec: #{MRUBY_VERSION}"
+  end
+  sh cmd
 end
 
 APP_NAME=ENV["APP_NAME"] || "rcon"
