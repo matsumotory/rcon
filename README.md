@@ -25,7 +25,7 @@ __Require: golang docker__
 ```
 rake package
 ls -l pkg/
-rake release
+GITHUB_TOKEN=`cat ~/.github_token` rake release
 ```
 
 ## usage
