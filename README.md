@@ -16,13 +16,16 @@ rake
 cp -p mruby/bin/rcon /path/to/bin-dir/.
 ```
 
-## build packages
+## build packages and release
 
 Create release binary considering glibc versions using Docker.
+
+__Require: golang docker__
 
 ```
 rake package
 ls -l pkg/
+rake release
 ```
 
 ## usage
