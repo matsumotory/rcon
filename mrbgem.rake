@@ -9,6 +9,5 @@ MRuby::Gem::Specification.new('rcon') do |spec|
   spec.add_dependency "mruby-rcon", :github => "matsumoto-r/mruby-rcon"
   spec.add_dependency "mruby-env", :mgem => "mruby-env"
   spec.add_dependency "mruby-getopts", :mgem => "mruby-getopts"
-  spec.add_dependency "mruby-signal", :mgem => "mruby-signal"
 
 end

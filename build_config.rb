@@ -3,9 +3,7 @@ def gem_config(conf)
   conf.gem :mgem => "mruby-rcon"
   conf.gem :mgem => "mruby-env"
   conf.gem :mgem => "mruby-getopts"
-  conf.gem :mgem => "mruby-signal"
 
-  # be sure to include this gem (the cli app)
   conf.gem File.expand_path(File.dirname(__FILE__))
 end
 
