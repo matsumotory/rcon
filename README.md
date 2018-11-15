@@ -8,10 +8,12 @@ rcon is a lightweight resource virtualization tool for linux processes. rcon is 
 
 ## build
 
-- require
-  - cgroup
+### build on vagrant
 
 ```
+vagrant up
+vagrant ssh
+cd rcon/
 rake
 cp -p mruby/bin/rcon /path/to/bin-dir/.
 ```
@@ -21,6 +23,8 @@ cp -p mruby/bin/rcon /path/to/bin-dir/.
 Create release binary considering glibc versions using Docker.
 
 __Require: golang docker__
+
+I build and release rcon on macOS.
 
 ```
 rake package
